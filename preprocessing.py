@@ -8,13 +8,14 @@ def preprocessing(file):
     image = color.rgb2gray(np.array(Image.open(file).convert('RGB')))
     h,w =image.shape
     resized_img = resize(
-        image, (128,128)
+        image, (128,256)
     )
     fd, hog_image = hog(
         resized_img,
-        orientations=8,
-        pixels_per_cell=(16, 16),
-        cells_per_block=(1, 1),
+        orientations=9,
+        pixels_per_cell=(8, 8),
+        cells_per_block=(2, 2),
+        feature_vector=True,
         visualize=True,
     )
     hog_image_rescaled = exposure.rescale_intensity(hog_image)

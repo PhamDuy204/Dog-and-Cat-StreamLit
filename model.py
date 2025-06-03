@@ -1,4 +1,4 @@
-from sklearn.svm import SVC
+from sklearn.linear_model import LogisticRegression
 from data_preparation import get_data
 from preprocessing import *
 import pickle
@@ -7,7 +7,7 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__))))
 class Model:
     def __init__(self,**kwarg):
-        self.model =SVC(**kwarg,probability=True)
+        self.model =LogisticRegression(**kwarg,n_jobs=-1)
     def train(self):
         if not os.path.exists('./checkpoints/best_model.pkl'):
             fearues,label=get_data()
